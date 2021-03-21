@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- Se le asigna el nombre de la variable app del fichero app.js -->
+<html ng-app="universidadApp">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Ejercicio 02 - Profesor</title>
+
+
+        <!-- Incluir Bootstrap -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        
+        <!-- Incluir AngularJS -->
+        <script src="js/lib/angular.min.js"></script>
+        <!-- Se enlaza el fichero app -->
+        <script src="js/app.js"></script>
+
+
+    </head>    
+    <body>
+                                <!-- Se le pasa el controller con la propiedad ng-controller -->
+                                <!-- Con esto conseguimos que todo este div lo maneja el profesorController -->
+                                <!-- Se pueden poner alias para que sea más corto como en MySQL. as loquesea -->
+        <div class="container" ng-controller="profesorCtrl as profe">
+            <h1>Profesor</h1>
+            <!-- llamamos al controller (profe) que tiene dentro una variable (profesor) que tiene las propiedades (nombre) -->
+            <!-- Si hacemos referencia a $scope no hace falta llamar a los alias -->
+            <h4>{{ profesor.nombre }}</h4>
+            <hr>
+
+            <div class="row">
+                
+                <!-- Div que contiene la imagen del profesor -->
+                <div class="col-sm-3">
+                    <section class="panel">
+                        <div class="panel-body" align="center">
+                            <!-- Usamos ng-src de Angular en vez de el normal para que en los navegadores no aparezca -->
+                            <!-- el error de que no encuentra la página antes de cargar AngularJS -->
+                            <img ng-src="{{ profesor.foto }}" class="img-circle" alt="" width="150px" height="150px">
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Div donde se mostrará la bio del profesor -->
+                <div class="col-sm-9">
+                    <section class="panel">
+                        <div class="panel-body">
+                            {{ profesor.bio }}
+                            <br>
+                            <br>
+                            <strong>Edad:</strong> {{ profesor.edad }}   
+                            <br/>
+                                                            <!-- ng de AngularJS para pasar una función al hacer click -->
+                            <button class="btn btn-primary" ng-click="EditarProfesor()">Editar</button>
+                            <button class="btn btn-primary" ng-click="GuardarCambios()">Guardar</button>
+                            <button class="btn btn-danger" ng-click="CancelarCambios()">Cancelar</button>
+                        </div>
+                    </section>
+                </div>
+
+
+            </div>
+
+            <div class="row" ng-show="mostrarCaja">
+                
+                <div class="col-sm-9">
+                    <section class="panel">
+                        <div class="panel-body">
+                            Nombre:
+                            <input type="text" class="form-control" ng-model="editando.nombre"> <!-- No hace falta poner {{}} solo en ng-src -->
+                            <br/>
+                            Edad:
+                            <input type="text" class="form-control" ng-model="editando.edad">
+
+                            <br/>
+                            Bio:
+                            <textarea class="form-control" rows="5" ng-model="editando.bio">
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+</html>
