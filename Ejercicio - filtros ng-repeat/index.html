@@ -22,6 +22,10 @@
                 height: 75px;
             }
 
+            .puntero{
+                cursor: pointer;
+            }
+
         </style>
 
     </head>    
@@ -46,18 +50,21 @@
                     <option value="mujer">Mujeres</option>
                     <option value="hombre">Hombres</option>
                 </select>
+                <br/>
             </div>
 
             <table class="table table-striped">
                 <tr>
                     <th>Avatar</th>
-                    <th>Nombre</th>
-                    <th>Sexo</th>
+                    <th><a class="puntero" ng-click="columna='nombre'; reverse = !reverse;">Nombre</a></th>
+                    <th><a class="puntero" ng-click="columna='sexo'; reverse = !reverse;">Sexo</a></th>
                     <th>Teléfono</th>
                     <th>Móvil</th>
                 </tr>
                                                 <!-- Se aplica el filtro deseado que hemos creado más arriba -->
-                <tr ng-repeat="persona in personas | filter:busqueda">
+                                                <!-- Se filtra por una variable, por eso se le pone '' -->
+                                                <!-- Si queremos que se ordene a la inversa, simplemente se debe poner -nombre -->
+                <tr ng-repeat="persona in personas | filter:busqueda | orderBy:columna:reverse">
                     <td><img ng-src="img/{{ persona.avatar }}" class="avatar img-circle"></td>
                     <td>{{ persona.nombre }}</td>
                     <td>{{ persona.sexo }}</td>
