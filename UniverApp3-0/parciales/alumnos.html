@@ -9,10 +9,18 @@
 			<th>Nombre</th>
 			<th>Teléfono</th>
 		</tr>
-		<tr ng-repeat="alumno in alumnos">
+		<!-- Con limit podemos elegir cuántos registros se muestran -->
+		<tr ng-repeat="alumno in alumnos | limitTo:posicion | limitTo:-5">
 			<td>{{ alumno.codigo }}</td>
 			<td>{{ alumno.nombre }}</td>
 			<td>{{ alumno.telefono | telefono }}</td>
 		</tr>
 	</table>
+
+	<br/>
+
+	<button class="btn btn-primary" ng-click="anteriores()">Anteriores</button>
+	<button class="btn btn-primary" ng-click="siguientes()">Siguientes</button>
+	{{posicion}}
+
 </div>
