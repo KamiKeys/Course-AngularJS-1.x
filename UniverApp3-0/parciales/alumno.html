@@ -4,14 +4,17 @@
 
 <div class="row">
 	<form ng-submit="guardarAlumno()">
-		Código:
-		<br>
-		<input type="text" class="form-control" ng-model="alumno.codigo" readonly="readonly">
-		<br>
+
+		<div ng-hide="creando">
+			Código:
+			<br>
+			<input type="text" class="form-control" ng-model="alumno.codigo" readonly="readonly">
+			<br>
+		</div>
 
 		Nombre:
 		<br>
-		<input type="text" class="form-control" ng-model="alumno.nombre" required>
+		<input type="text" class="form-control" ng-model="alumno.nombre" required placeholder="Nombre del alumno">
 		<br>
 
 		Teléfono:
@@ -21,7 +24,7 @@
 
 		Dirección:
 		<br>
-		<textarea class="form-control" ng-model="alumno.direccion" rows="5" required></textarea>
+		<textarea class="form-control" ng-model="alumno.direccion" rows="5" required placeholder="Dirección del alumno"></textarea>
 		<br>
 
 		<br>
