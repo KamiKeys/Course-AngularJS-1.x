@@ -3,7 +3,7 @@
 <hr>
 
 <div class="row">
-	<form>
+	<form ng-submit="guardarAlumno()">
 		Código:
 		<br>
 		<input type="text" class="form-control" ng-model="alumno.codigo" readonly="readonly">
@@ -11,20 +11,23 @@
 
 		Nombre:
 		<br>
-		<input type="text" class="form-control" ng-model="alumno.nombre">
+		<input type="text" class="form-control" ng-model="alumno.nombre" required>
 		<br>
 
 		Teléfono:
 		<br>
-		<input type="text" class="form-control" ng-model="alumno.telefono" ui-mask="{{ telefonoMask }}">
+		<input type="text" class="form-control" ng-model="alumno.telefono" ui-mask="{{ telefonoMask }}" required>
 		<br>
 
 		Dirección:
 		<br>
-		<textarea class="form-control" ng-model="alumno.direccion" rows="5"></textarea>
+		<textarea class="form-control" ng-model="alumno.direccion" rows="5" required></textarea>
 		<br>
 
 		<br>
 		<button type="submit" class="btn btn-primary">Guardar Cambios</button>
+
+		<br><br>
+		<p class="text-success animated fadeIn fast" ng-show="actualizado">Registro Actualizado</p>
 	</form>
 </div>
